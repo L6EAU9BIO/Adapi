@@ -1,0 +1,7 @@
+### Un dépot éxistant 
+
+GET http://localhost:3000/api/depots/1
+
+### Dépot non éxistant (erreur 404)
+
+GET http://localhost:3000/api/depots/9999
