@@ -1,0 +1,14 @@
+### Créer une adherente
+
+POST http://localhost:3000/api/personnes
+Content-Type: application/json
+
+{
+    "nom" : "Yaourtine",
+    "prenom" : "Janine",
+    "telephone" : "0674564523",
+    "adherente" : true
+}
+
+
+

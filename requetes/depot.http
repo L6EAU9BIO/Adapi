@@ -5,3 +5,35 @@ GET http://localhost:3000/api/depots/1
 ### Dépot non éxistant (erreur 404)
 
 GET http://localhost:3000/api/depots/9999
+
+### Créer un dépot valide
+
+POST  http://localhost:3000/api/depots
+Content-Type: application/json
+
+{
+ "personne_id" : 1 ,
+ "date_depot" : "2026-10-09" , 
+ "type" : "domicile"
+}
+
+### Cas d'erreur champ manquant (400)
+
+POST http://localhost:3000/api/depots
+Content-Type: application/json
+
+{
+    "personne_id" : 1 ,
+    "type" : "boutique"
+}
+
+### Cas d'erreur valeur enum invalide (400)
+
+POST http://localhost:3000/api/depots
+Content-Type: application/json
+
+{
+    "personne_id" : 1, 
+    "date_depot" : "2026-10-09" ,
+    "type" : "sur_place"
+}

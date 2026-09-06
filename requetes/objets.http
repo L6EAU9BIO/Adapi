@@ -21,3 +21,83 @@ GET http://localhost:3000/api/objets/1
 ### Objet non existant (erreur 404)
 
 GET http://localhost:3000/api/objets/9999
+
+### Ajout un objet à un dépôt existant 
+
+POST http://localhost:3000/api/depots/1/objets
+Content-Type: application/json
+
+{
+    "libelle" : "Crevette qui couine",
+    "poids_kg" : 0.2 ,
+    "etat_arrivee" : "bon_etat" , 
+    "categorie_id" : 6
+}
+
+### Cas d'erreur champ manquant (400)
+
+POST http://localhost:3000/api/depots/1/objets
+Content-Type: application/json
+
+{
+    "libelle" : "Crevette qui couine"
+}
+
+### Cas d'erreur dépôt inexistant (404)
+POST http://localhost:3000/api/depots/999/objets
+Content-Type: application/json
+
+{
+    "libelle" : "Crevette qui couine",
+    "poids_kg" : 0.2 ,
+    "etat_arrivee" : "bon_etat" , 
+    "categrorie_id" : 6
+}
+
+### Changer le statut d'un objet (200)
+
+PATCH http://localhost:3000/api/objets/1/statut
+Content-Type: application/json
+
+{
+    "statut" : "en_rayon",
+    "prix" : 18.5
+}
+
+### Cas erreur objet inexistant (404)
+
+PATCH http://localhost:3000/api/objets/9999/statut
+Content-Type: application/json
+
+{
+    "statut" : "recycle"
+}
+
+### Cas erreur statut manquant (400)
+
+PATCH http://localhost:3000/api/objets/1/statut
+Content-Type: application/json
+
+{
+
+}
+
+### Cas erreur statut invalide (400)
+
+PATCH http://localhost:3000/api/objets/1/statut
+Content-Type: application/json
+
+{
+    "statut" : "poubelle"
+}
+
+
+### Cas erreur prix invalide (400)
+
+PATCH http://localhost:3000/api/objets/1/statut
+Content-Type: application/json
+
+{
+    "statut" : "en_rayon", 
+    "prix" : "offert"
+}
